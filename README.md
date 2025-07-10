@@ -32,6 +32,7 @@ classDiagram
     }
 
     class JogoRecomendado {
+        +Integer compatibilidade
     }
 
     class Feature {
