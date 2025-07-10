@@ -20,7 +20,7 @@ classDiagram
     class Jogo {
         +String nome
         +String descricao
-        +int lancamento
+        +int anoLancamento
     }
 
     class JogoJogado {
