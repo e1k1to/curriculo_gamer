@@ -5,34 +5,11 @@ Projeto para cadastrar seus jogos favoritos!
 
 ```mermaid
 classDiagram
-    class Usuario {
+    class User {
         +String name
-        +JogosJogados jogosJogados
-        +JogosRecomendados jogosRecomendados
+        +List~JogoJogado~ jogosJogados
+        +List~JogoRecomendado~ jogosRecomendados
         +List~Feature~ features
-    }
-
-    class JogosJogados {
-        +List~JogoJogado~ Jogos
-    }
-
-    class JogosRecomendados {
-        +List~JogoRecomendado~ Jogos
-    }
-
-    class Jogo {
-        +String nome
-        +String descricao
-        +Integer anoLancamento
-    }
-
-    class JogoJogado {
-        +String status
-        +Integer nota
-    }
-
-    class JogoRecomendado {
-        +Integer compatibilidade
     }
 
     class Feature {
@@ -40,14 +17,26 @@ classDiagram
         +String description
     }
 
-    %% Relações e herança
-    Usuario "1" --> "1" JogosJogados
-    Usuario "1" --> "1" JogosRecomendados
-    Usuario "1" --> "0..*" Feature
-    JogosJogados "1" --> "0..*" JogoJogado
-    JogosRecomendados "1" --> "0..*" JogoRecomendado
+    class Jogo {
+        +String nome
+        +String descricao
+        +int lancamento
+    }
 
-    JogoJogado --|> Jogo
-    JogoRecomendado --|> Jogo
+    class JogoJogado {
+        +String status
+        +int nota
+    }
+
+    class JogoRecomendado {
+        +int compatibilidade
+    }
+
+    Jogo <|-- JogoJogado
+    Jogo <|-- JogoRecomendado
+
+    User "1" --> "*" JogoJogado
+    User "1" --> "*" JogoRecomendado
+    User "1" --> "*" Feature
 
 ```
