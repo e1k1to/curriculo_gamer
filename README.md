@@ -16,19 +16,21 @@ classDiagram
         +List~JogoJogado~ Jogos
     }
 
+    class JogosRecomendados {
+        +List~JogoRecomendado~ Jogos
+    }
+
     class JogoJogado {
-        +String nome
-        +String descricao
-        +Integer anoLancamento
         +String status
         +Integer nota
     }
 
-    class JogosRecomendados {
-        +List~Jogo~ Jogos
+    class JogoRecomendado {
+        <<implements>> 
     }
 
     class Jogo {
+        <<interface>>
         +String nome
         +String descricao
         +Integer anoLancamento
@@ -39,11 +41,14 @@ classDiagram
         +String description
     }
 
-    %% Cardinalidades
+    %% Relações e cardinalidades
     Usuario "1" --> "1" JogosJogados
     Usuario "1" --> "1" JogosRecomendados
     Usuario "1" --> "0..*" Feature
     JogosJogados "1" --> "0..*" JogoJogado
-    JogosRecomendados "1" --> "0..*" Jogo
+    JogosRecomendados "1" --> "0..*" JogoRecomendado
+
+    Jogo <|.. JogoJogado
+    Jogo <|.. JogoRecomendado
 
 ```
