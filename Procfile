@@ -1,0 +1,1 @@
+web: java -jar build/libs/curriculo_gamer-0.0.1-SNAPSHOT.jar

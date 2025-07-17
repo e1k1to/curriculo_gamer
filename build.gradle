@@ -29,6 +29,12 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+tasks.jar {
+	manifest {
+		attributes["Main-Class"] = "xyz.linuwux.curriculo_gamer.Application"
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
